@@ -29,9 +29,61 @@ export class CharService {
         return result.id as string;
     }
 
-    async getAllGusu(){
+    async getAllLan(){
         const chars  = await this.charModel.find().exec();
         const gusu = chars.filter((e)=> e.sect==="Gusu Lan");
+        return gusu.map(c => ({ id: c.id, 
+            birthName: c.birthName,
+            courtesyName: c.courtesyName,
+            title: c.title,
+            sect: c.sect,
+            weapon: c.weapon, 
+            picture: c.picture 
+        }));
+
+    }
+    async getAllJiang(){
+        const chars  = await this.charModel.find().exec();
+        const gusu = chars.filter((e)=> e.sect==="Yunmeng Jiang");
+        return gusu.map(c => ({ id: c.id, 
+            birthName: c.birthName,
+            courtesyName: c.courtesyName,
+            title: c.title,
+            sect: c.sect,
+            weapon: c.weapon, 
+            picture: c.picture 
+        }));
+
+    }
+    async getAllJin(){
+        const chars  = await this.charModel.find().exec();
+        const gusu = chars.filter((e)=> e.sect==="Lanling Jin");
+        return gusu.map(c => ({ id: c.id, 
+            birthName: c.birthName,
+            courtesyName: c.courtesyName,
+            title: c.title,
+            sect: c.sect,
+            weapon: c.weapon, 
+            picture: c.picture 
+        }));
+
+    }
+    async getAllNie(){
+        const chars  = await this.charModel.find().exec();
+        const gusu = chars.filter((e)=> e.sect==="Qinghe Nie");
+        return gusu.map(c => ({ id: c.id, 
+            birthName: c.birthName,
+            courtesyName: c.courtesyName,
+            title: c.title,
+            sect: c.sect,
+            weapon: c.weapon, 
+            picture: c.picture 
+        }));
+
+    }
+    async getAllWen(){
+        const chars  = await this.charModel.find().exec();
+        const gusu = chars.filter((e)=> e.sect==="Qishan Wen");
         return gusu.map(c => ({ id: c.id, 
             birthName: c.birthName,
             courtesyName: c.courtesyName,

@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
 export const CharSchema = new mongoose.Schema({
-    birthName: {type: String, required:true},
+    birthName: {type: String, required:false},
     courtesyName: {type: String, required:false},
     title: {type: String, required:false},
     sect: {type: String, required:false},

@@ -52,9 +52,30 @@ export class CharController {
         return null;
     }
 
-    @Get('sect/Gusu')
-    async getAllGusu(){
-        const chars = await this.charsService.getAllGusu();
+    @Get('sect/lan')
+    async getAllLan(){
+        const chars = await this.charsService.getAllLan();
         return chars;
     }
+    @Get('sect/jiang')
+    async getAllJiang(){
+        const chars = await this.charsService.getAllJiang();
+        return chars;
+    }
+    @Get('sect/jin')
+    async getAllJin(){
+        const chars = await this.charsService.getAllJin();
+        return chars;
+    }
+    @Get('sect/nie')
+    async getAllNie(){
+        const chars = await this.charsService.getAllNie();
+        return chars;
+    }
+    @Get('sect/wen')
+    async getAllWen(){
+        const chars = await this.charsService.getAllWen();
+        return chars;
+    }
+
 }
