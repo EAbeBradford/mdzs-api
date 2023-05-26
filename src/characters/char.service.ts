@@ -100,6 +100,13 @@ export class CharService {
         return { birthName: char.birthName, courtesyName:char.courtesyName, title: char.title, sect: char.sect, weapon: char.weapon, picture: char.picture };
     }
 
+    async getCharByName(name: string) {
+
+        
+        const char = await (await this.findChar(name));
+        return { birthName: char.birthName, courtesyName:char.courtesyName, title: char.title, sect: char.sect, weapon: char.weapon, picture: char.picture };
+    }
+
     async updateCharById(charId: string, birthName: string, courtesyName: string, title:string, sect: string, weapon: Array<string>, picture:string) {
         const updatedChar = await this.findChar(charId);
 

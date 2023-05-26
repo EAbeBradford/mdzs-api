@@ -1,3 +1,35 @@
+## title
+Welcome to the MDZS api! 
+
+## description
+this api has data primarily focused on the chinese drama The Untamed an adaptation of Mo Xian Tong Xiu's book The Grandmaster of Demonic Cultivation or Mo Dao Zu Shi.
+
+## how it works
+use the base url <a href = "https://mdzs-api.fly.dev"> </a> and concat with the get endpoints you want to use.
+
+## example enpoints
+<a href=https://mdzs-api.fly.dev/characters> </a> 
+this gets all the charaters in The Untamed
+
+<a href=https://mdzs-api.fly.dev/characters/sect/lan> </a> 
+this gets all the charaters in the Lan sect
+get other sects by replacing lan with jin, jiang, wen, or nie
+
+<a href=https://mdzs-api.fly.dev/characters/644fffc6ad59705a8ee36956> </a> 
+this gets the wei ying
+get other sects by replacing 644fffc6ad59705a8ee36956 with a character's id
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>

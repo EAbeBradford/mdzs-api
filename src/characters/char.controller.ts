@@ -31,6 +31,12 @@ export class CharController {
     
         return char;
     }
+    @Get('/name/:name')
+    async getCharByName(@Param('name') name: string,) {
+        const char  = await this.charsService.getCharByName(name);
+    
+        return char;
+    }
 
     @Patch(':id')
     async updateCharById(
