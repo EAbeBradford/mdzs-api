@@ -7,15 +7,20 @@ use the base url <a href = "https://mdzs-api.fly.dev"> https://mdzs-api.fly.dev<
 
 ## example enpoints
 <a href=https://mdzs-api.fly.dev/characters> https://mdzs-api.fly.dev/characters</a> 
-...this gets all the charaters in The Untamed
+
+this gets all the charaters in The Untamed
 
 <a href=https://mdzs-api.fly.dev/characters/sect/lan> https://mdzs-api.fly.dev/characters/sect/lan</a> 
-...this gets all the charaters in the Lan sect
-...get other sects by replacing lan with jin, jiang, wen, or nie
+
+this gets all the charaters in the Lan sect
+
+get other sects by replacing lan with jin, jiang, wen, or nie
 
 <a href=https://mdzs-api.fly.dev/characters/644fffc6ad59705a8ee36956> https://mdzs-api.fly.dev/characters/644fffc6ad59705a8ee36956</a> 
-...this gets the wei ying
-...get other sects by replacing 644fffc6ad59705a8ee36956 with a character's id
+
+this gets the wei ying
+
+get other sects by replacing 644fffc6ad59705a8ee36956 with a character's id
 
 
 
