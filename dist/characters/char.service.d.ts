@@ -13,7 +13,43 @@ export declare class CharService {
         picture: string;
     }[]>;
     insertChar(birthName: string, courtesyName: string, title: string, sect: string, weapon: Array<string>, picture: string): Promise<string>;
-    getAllGusu(): Promise<{
+    getAllLan(): Promise<{
+        id: string;
+        birthName: string;
+        courtesyName: string;
+        title: string;
+        sect: string;
+        weapon: string[];
+        picture: string;
+    }[]>;
+    getAllJiang(): Promise<{
+        id: string;
+        birthName: string;
+        courtesyName: string;
+        title: string;
+        sect: string;
+        weapon: string[];
+        picture: string;
+    }[]>;
+    getAllJin(): Promise<{
+        id: string;
+        birthName: string;
+        courtesyName: string;
+        title: string;
+        sect: string;
+        weapon: string[];
+        picture: string;
+    }[]>;
+    getAllNie(): Promise<{
+        id: string;
+        birthName: string;
+        courtesyName: string;
+        title: string;
+        sect: string;
+        weapon: string[];
+        picture: string;
+    }[]>;
+    getAllWen(): Promise<{
         id: string;
         birthName: string;
         courtesyName: string;
@@ -23,6 +59,14 @@ export declare class CharService {
         picture: string;
     }[]>;
     getCharById(charId: string): Promise<{
+        birthName: string;
+        courtesyName: string;
+        title: string;
+        sect: string;
+        weapon: string[];
+        picture: string;
+    }>;
+    getCharByName(name: string): Promise<{
         birthName: string;
         courtesyName: string;
         title: string;

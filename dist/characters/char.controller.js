@@ -31,6 +31,10 @@ let CharController = class CharController {
         const char = await this.charsService.getCharById(charId);
         return char;
     }
+    async getCharByName(name) {
+        const char = await this.charsService.getCharByName(name);
+        return char;
+    }
     async updateCharById(charId, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture) {
         await this.charsService.updateCharById(charId, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture);
         return null;
@@ -39,8 +43,24 @@ let CharController = class CharController {
         await this.charsService.deleteCharById(charId);
         return null;
     }
-    async getAllGusu() {
-        const chars = await this.charsService.getAllGusu();
+    async getAllLan() {
+        const chars = await this.charsService.getAllLan();
+        return chars;
+    }
+    async getAllJiang() {
+        const chars = await this.charsService.getAllJiang();
+        return chars;
+    }
+    async getAllJin() {
+        const chars = await this.charsService.getAllJin();
+        return chars;
+    }
+    async getAllNie() {
+        const chars = await this.charsService.getAllNie();
+        return chars;
+    }
+    async getAllWen() {
+        const chars = await this.charsService.getAllWen();
         return chars;
     }
 };
@@ -70,6 +90,13 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], CharController.prototype, "getCharById", null);
 __decorate([
+    (0, common_1.Get)('/name/:name'),
+    __param(0, (0, common_1.Param)('name')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], CharController.prototype, "getCharByName", null);
+__decorate([
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)('birthName')),
@@ -90,11 +117,35 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], CharController.prototype, "deleteCharById", null);
 __decorate([
-    (0, common_1.Get)('sect/Gusu'),
+    (0, common_1.Get)('sect/lan'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], CharController.prototype, "getAllGusu", null);
+], CharController.prototype, "getAllLan", null);
+__decorate([
+    (0, common_1.Get)('sect/jiang'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CharController.prototype, "getAllJiang", null);
+__decorate([
+    (0, common_1.Get)('sect/jin'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CharController.prototype, "getAllJin", null);
+__decorate([
+    (0, common_1.Get)('sect/nie'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CharController.prototype, "getAllNie", null);
+__decorate([
+    (0, common_1.Get)('sect/wen'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CharController.prototype, "getAllWen", null);
 CharController = __decorate([
     (0, common_1.Controller)('characters'),
     __metadata("design:paramtypes", [char_service_1.CharService])

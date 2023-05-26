@@ -101,9 +101,24 @@ export class CharService {
     }
 
     async getCharByName(name: string) {
+    
+        const chars = await this.charModel.find().exec();
+        let char = chars[0];
+        if (name.indexOf("%20")>0){
+            name = name.replace("%20", " ")
+        }
+        chars.forEach((e)=>{
+            if(e.birthName.toLocaleLowerCase()===name.toLocaleLowerCase()){
+                char = e;
+            }
+            else if(e.courtesyName.toLocaleLowerCase()===name.toLocaleLowerCase()){
+                char = e;
+            }
+            else if(e.title.toLocaleLowerCase()=== name.toLocaleLowerCase()){
+                char = e;
+            }
+        })
 
-        
-        const char = await (await this.findChar(name));
         return { birthName: char.birthName, courtesyName:char.courtesyName, title: char.title, sect: char.sect, weapon: char.weapon, picture: char.picture };
     }
 

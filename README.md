@@ -25,6 +25,13 @@ this gets the wei ying
 
 get other sects by replacing 644fffc6ad59705a8ee36956 with a character's id
 
+#### <a href=https://mdzs-api.fly.dev/characters/wei ying> https://mdzs-api.fly.dev/characters/wei ying</a> 
+
+this gets the wei ying
+
+get other sects by replacing wei ying with a character's name
+
+
 
 
 
