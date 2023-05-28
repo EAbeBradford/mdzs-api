@@ -103,6 +103,9 @@ let CharService = class CharService {
     async getCharByName(name) {
         const chars = await this.charModel.find().exec();
         let char = chars[0];
+        if (name.indexOf("%20") > 0) {
+            name = name.replace("%20", " ");
+        }
         chars.forEach((e) => {
             if (e.birthName.toLocaleLowerCase() === name.toLocaleLowerCase()) {
                 char = e;
