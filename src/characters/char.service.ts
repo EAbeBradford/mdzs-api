@@ -44,8 +44,8 @@ export class CharService {
     }
     async getAllJiang(){
         const chars  = await this.charModel.find().exec();
-        const gusu = chars.filter((e)=> e.sect==="Yunmeng Jiang");
-        return gusu.map(c => ({ id: c.id, 
+        const jiang = chars.filter((e)=> e.sect==="Yunmeng Jiang");
+        return jiang.map(c => ({ id: c.id, 
             birthName: c.birthName,
             courtesyName: c.courtesyName,
             title: c.title,
@@ -57,8 +57,8 @@ export class CharService {
     }
     async getAllJin(){
         const chars  = await this.charModel.find().exec();
-        const gusu = chars.filter((e)=> e.sect==="Lanling Jin");
-        return gusu.map(c => ({ id: c.id, 
+        const jin = chars.filter((e)=> e.sect==="Lanling Jin");
+        return jin.map(c => ({ id: c.id, 
             birthName: c.birthName,
             courtesyName: c.courtesyName,
             title: c.title,
@@ -70,8 +70,8 @@ export class CharService {
     }
     async getAllNie(){
         const chars  = await this.charModel.find().exec();
-        const gusu = chars.filter((e)=> e.sect==="Qinghe Nie");
-        return gusu.map(c => ({ id: c.id, 
+        const nie = chars.filter((e)=> e.sect==="Qinghe Nie");
+        return nie.map(c => ({ id: c.id, 
             birthName: c.birthName,
             courtesyName: c.courtesyName,
             title: c.title,
@@ -83,8 +83,8 @@ export class CharService {
     }
     async getAllWen(){
         const chars  = await this.charModel.find().exec();
-        const gusu = chars.filter((e)=> e.sect==="Qishan Wen");
-        return gusu.map(c => ({ id: c.id, 
+        const wen = chars.filter((e)=> e.sect==="Qishan Wen");
+        return wen.map(c => ({ id: c.id, 
             birthName: c.birthName,
             courtesyName: c.courtesyName,
             title: c.title,
