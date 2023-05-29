@@ -3,12 +3,12 @@ import { Module } from '@nestjs/common';
 import { LocationsService } from './locations.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { LocationsController } from './locations.controller';
+import { LocationSchema } from './locations.model';
 //import { CharSchema } from './char.model';
 
 @Module({
   //imports: [ProductModule],
-  // imports: [MongooseModule.forFeature([{ name: 'Char', schema: CharSchema }])],
-  imports:[],
+  imports: [MongooseModule.forFeature([{ name: 'Locations', schema: LocationSchema }])],
   controllers: [LocationsController],
   providers: [LocationsService]
 })

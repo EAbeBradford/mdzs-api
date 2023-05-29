@@ -9,12 +9,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LocationsModule = void 0;
 const common_1 = require("@nestjs/common");
 const locations_service_1 = require("./locations.service");
+const mongoose_1 = require("@nestjs/mongoose");
 const locations_controller_1 = require("./locations.controller");
+const locations_model_1 = require("./locations.model");
 let LocationsModule = class LocationsModule {
 };
 LocationsModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [mongoose_1.MongooseModule.forFeature([{ name: 'Locations', schema: locations_model_1.LocationSchema }])],
         controllers: [locations_controller_1.LocationsController],
         providers: [locations_service_1.LocationsService]
     })

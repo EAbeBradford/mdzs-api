@@ -30,6 +30,7 @@ export declare class CharController {
         weapon: string[];
         picture: string;
     }>;
+    updateCharByName(charName: string, charBirthName: string, charCourtesyName: string, charTitle: string, charSect: string, charWeapon: Array<string>, charPicture: string): Promise<any>;
     updateCharById(charId: string, charBirthName: string, charCourtesyName: string, charTitle: string, charSect: string, charWeapon: Array<string>, charPicture: string): Promise<any>;
     deleteCharById(charId: string): Promise<any>;
     getAllLan(): Promise<{

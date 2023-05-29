@@ -119,6 +119,57 @@ let CharService = class CharService {
         });
         return { birthName: char.birthName, courtesyName: char.courtesyName, title: char.title, sect: char.sect, weapon: char.weapon, picture: char.picture };
     }
+    async updateCharByName(charName, birthName, courtesyName, title, sect, weapon, picture) {
+        const chars = await this.charModel.find().exec();
+        let char = chars[0];
+        if (charName.indexOf("%20") > 0) {
+            charName = charName.replace("%20", " ");
+        }
+        chars.forEach((e) => {
+            if (e.birthName.toLocaleLowerCase() === charName.toLocaleLowerCase()) {
+                char = e;
+            }
+            else if (e.courtesyName.toLocaleLowerCase() === charName.toLocaleLowerCase()) {
+                char = e;
+            }
+            else if (e.title.toLocaleLowerCase() === charName.toLocaleLowerCase()) {
+                char = e;
+            }
+        });
+        console.log("is array", Array.isArray(weapon));
+        console.log(weapon);
+        const updatedChar = char;
+        if (birthName) {
+            updatedChar.birthName = birthName;
+        }
+        if (courtesyName) {
+            updatedChar.courtesyName = courtesyName;
+        }
+        if (title) {
+            updatedChar.title = title;
+        }
+        if (sect) {
+            updatedChar.sect = sect;
+        }
+        if (weapon) {
+            if (Array.isArray(weapon)) {
+                weapon.forEach(e => {
+                    if (e && updatedChar.weapon.indexOf(e) == -1) {
+                        updatedChar.weapon.push(e);
+                    }
+                });
+            }
+            else {
+                if (weapon && updatedChar.weapon.indexOf(weapon) == -1) {
+                    updatedChar.weapon.push(weapon);
+                }
+            }
+        }
+        if (picture) {
+            updatedChar.picture = picture;
+        }
+        updatedChar.save();
+    }
     async updateCharById(charId, birthName, courtesyName, title, sect, weapon, picture) {
         const updatedChar = await this.findChar(charId);
         if (birthName) {

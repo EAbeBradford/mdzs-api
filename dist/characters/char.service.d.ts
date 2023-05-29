@@ -74,6 +74,7 @@ export declare class CharService {
         weapon: string[];
         picture: string;
     }>;
+    updateCharByName(charName: string, birthName: string, courtesyName: string, title: string, sect: string, weapon: Array<string>, picture: string): Promise<void>;
     updateCharById(charId: string, birthName: string, courtesyName: string, title: string, sect: string, weapon: Array<string>, picture: string): Promise<void>;
     deleteCharById(charId: string): Promise<void>;
     private findChar;
