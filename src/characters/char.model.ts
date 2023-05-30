@@ -7,6 +7,8 @@ export const CharSchema = new mongoose.Schema({
     sect: {type: String, required:false},
     weapon: {type: [String], required:false}, 
     picture: {type: String, required:true},
+    description: {type: String, required:false},
+
 
 });
 
@@ -18,5 +20,6 @@ export interface Char extends mongoose.Document {
     sect: string,
     weapon: Array<string>, 
     picture: string,
+    description: string,
 
 }

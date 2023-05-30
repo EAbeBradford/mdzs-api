@@ -19,9 +19,10 @@ export class CharController {
         @Body('sect') charSect: string, 
         @Body('weapon') charWeapon: Array<string>, 
         @Body('picture') charPicture: string,
+        @Body('description') charDescription: string,
         ) {
 
-        const generatedId = await this.charsService.insertChar(charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture);
+        const generatedId = await this.charsService.insertChar(charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription);
         return { id: generatedId };
     }
 
@@ -47,8 +48,10 @@ export class CharController {
         @Body('sect') charSect: string, 
         @Body('weapon') charWeapon: Array<string>, 
         @Body('picture') charPicture: string,
+        @Body('description') charDescription: string,
+
     ) {
-        await this.charsService.updateCharByName(charName, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture);
+        await this.charsService.updateCharByName(charName, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription);
         return null;
     }
 
@@ -61,8 +64,10 @@ export class CharController {
         @Body('sect') charSect: string, 
         @Body('weapon') charWeapon: Array<string>, 
         @Body('picture') charPicture: string,
+        @Body('description') charDescription: string,
+
     ) {
-        await this.charsService.updateCharById(charId, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture);
+        await this.charsService.updateCharById(charId, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription);
         return null;
     }
 

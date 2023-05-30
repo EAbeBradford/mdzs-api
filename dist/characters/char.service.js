@@ -22,106 +22,153 @@ let CharService = class CharService {
     }
     async getAllChars() {
         const chars = await this.charModel.find().exec();
-        return chars.map(c => ({ id: c.id,
+        return chars.map((c) => ({
+            id: c.id,
             birthName: c.birthName,
             courtesyName: c.courtesyName,
             title: c.title,
             sect: c.sect,
             weapon: c.weapon,
-            picture: c.picture
+            picture: c.picture,
+            description: c.description,
         }));
     }
-    async insertChar(birthName, courtesyName, title, sect, weapon, picture) {
-        const newChar = new this.charModel({ birthName: birthName, courtesyName: courtesyName, title: title, sect: sect, weapon: weapon, picture: picture });
+    async insertChar(birthName, courtesyName, title, sect, weapon, picture, description) {
+        const newChar = new this.charModel({
+            birthName: birthName,
+            courtesyName: courtesyName,
+            title: title,
+            sect: sect,
+            weapon: weapon,
+            picture: picture,
+            description: description,
+        });
         const result = await newChar.save();
         return result.id;
     }
     async getAllLan() {
         const chars = await this.charModel.find().exec();
         const gusu = chars.filter((e) => e.sect === "Gusu Lan");
-        return gusu.map(c => ({ id: c.id,
+        return gusu.map((c) => ({
+            id: c.id,
             birthName: c.birthName,
             courtesyName: c.courtesyName,
             title: c.title,
             sect: c.sect,
             weapon: c.weapon,
-            picture: c.picture
+            picture: c.picture,
+            description: c.description,
         }));
     }
     async getAllJiang() {
         const chars = await this.charModel.find().exec();
         const jiang = chars.filter((e) => e.sect === "Yunmeng Jiang");
-        return jiang.map(c => ({ id: c.id,
+        return jiang.map((c) => ({
+            id: c.id,
             birthName: c.birthName,
             courtesyName: c.courtesyName,
             title: c.title,
             sect: c.sect,
             weapon: c.weapon,
-            picture: c.picture
+            picture: c.picture,
+            description: c.description,
         }));
     }
     async getAllJin() {
         const chars = await this.charModel.find().exec();
         const jin = chars.filter((e) => e.sect === "Lanling Jin");
-        return jin.map(c => ({ id: c.id,
+        return jin.map((c) => ({
+            id: c.id,
             birthName: c.birthName,
             courtesyName: c.courtesyName,
             title: c.title,
             sect: c.sect,
             weapon: c.weapon,
-            picture: c.picture
+            picture: c.picture,
+            description: c.description,
         }));
     }
     async getAllNie() {
         const chars = await this.charModel.find().exec();
         const nie = chars.filter((e) => e.sect === "Qinghe Nie");
-        return nie.map(c => ({ id: c.id,
+        return nie.map((c) => ({
+            id: c.id,
             birthName: c.birthName,
             courtesyName: c.courtesyName,
             title: c.title,
             sect: c.sect,
             weapon: c.weapon,
-            picture: c.picture
+            picture: c.picture,
+            description: c.description,
         }));
     }
     async getAllWen() {
         const chars = await this.charModel.find().exec();
         const wen = chars.filter((e) => e.sect === "Qishan Wen");
-        return wen.map(c => ({ id: c.id,
+        return wen.map((c) => ({
+            id: c.id,
             birthName: c.birthName,
             courtesyName: c.courtesyName,
             title: c.title,
             sect: c.sect,
             weapon: c.weapon,
-            picture: c.picture
+            picture: c.picture,
+            description: c.description,
         }));
     }
     async getCharById(charId) {
-        const char = await (await this.findChar(charId));
-        return { birthName: char.birthName, courtesyName: char.courtesyName, title: char.title, sect: char.sect, weapon: char.weapon, picture: char.picture };
+        const char = await await this.findChar(charId);
+        return {
+            birthName: char.birthName,
+            courtesyName: char.courtesyName,
+            title: char.title,
+            sect: char.sect,
+            weapon: char.weapon,
+            picture: char.picture,
+            description: char.description,
+        };
     }
     async getCharByName(name) {
         const chars = await this.charModel.find().exec();
-        let char = chars[0];
-        if (name.indexOf("%20") > 0) {
-            name = name.replace("%20", " ");
+        let char;
+        try {
+            if (name.indexOf("%20") > 0) {
+                name = name.replace("%20", " ");
+            }
+            chars.forEach((e) => {
+                if (e.birthName.toLocaleLowerCase() === name.toLocaleLowerCase()) {
+                    char = e;
+                }
+                else if (e.courtesyName.toLocaleLowerCase() === name.toLocaleLowerCase()) {
+                    char = e;
+                }
+                else if (e.title.toLocaleLowerCase() === name.toLocaleLowerCase()) {
+                    char = e;
+                }
+            });
         }
-        chars.forEach((e) => {
-            if (e.birthName.toLocaleLowerCase() === name.toLocaleLowerCase()) {
-                char = e;
-            }
-            else if (e.courtesyName.toLocaleLowerCase() === name.toLocaleLowerCase()) {
-                char = e;
-            }
-            else if (e.title.toLocaleLowerCase() === name.toLocaleLowerCase()) {
-                char = e;
-            }
-        });
-        return { birthName: char.birthName, courtesyName: char.courtesyName, title: char.title, sect: char.sect, weapon: char.weapon, picture: char.picture };
+        catch (error) {
+            throw new common_1.NotFoundException("charater does not exist! try again Mo Xuanyu");
+        }
+        if (!char) {
+            throw new common_1.NotFoundException("charater does not exist! try again Mo Xuanyu");
+        }
+        else {
+            return {
+                id: char.id,
+                birthName: char.birthName,
+                courtesyName: char.courtesyName,
+                title: char.title,
+                sect: char.sect,
+                weapon: char.weapon,
+                picture: char.picture,
+                description: char.description,
+            };
+        }
     }
-    async updateCharByName(charName, birthName, courtesyName, title, sect, weapon, picture) {
+    async updateCharByName(charName, birthName, courtesyName, title, sect, weapon, picture, description) {
         const chars = await this.charModel.find().exec();
-        let char = chars[0];
+        let char;
         if (charName.indexOf("%20") > 0) {
             charName = charName.replace("%20", " ");
         }
@@ -138,39 +185,47 @@ let CharService = class CharService {
         });
         console.log("is array", Array.isArray(weapon));
         console.log(weapon);
-        const updatedChar = char;
-        if (birthName) {
-            updatedChar.birthName = birthName;
+        if (!char) {
+            throw new common_1.NotFoundException("charater does not exist! try again Mo Xuanyu");
         }
-        if (courtesyName) {
-            updatedChar.courtesyName = courtesyName;
-        }
-        if (title) {
-            updatedChar.title = title;
-        }
-        if (sect) {
-            updatedChar.sect = sect;
-        }
-        if (weapon) {
-            if (Array.isArray(weapon)) {
-                weapon.forEach(e => {
-                    if (e && updatedChar.weapon.indexOf(e) == -1) {
-                        updatedChar.weapon.push(e);
-                    }
-                });
+        else {
+            const updatedChar = char;
+            if (birthName) {
+                updatedChar.birthName = birthName;
             }
-            else {
-                if (weapon && updatedChar.weapon.indexOf(weapon) == -1) {
-                    updatedChar.weapon.push(weapon);
+            if (courtesyName) {
+                updatedChar.courtesyName = courtesyName;
+            }
+            if (title) {
+                updatedChar.title = title;
+            }
+            if (sect) {
+                updatedChar.sect = sect;
+            }
+            if (weapon) {
+                if (Array.isArray(weapon)) {
+                    weapon.forEach((e) => {
+                        if (e && updatedChar.weapon.indexOf(e) == -1) {
+                            updatedChar.weapon.push(e);
+                        }
+                    });
+                }
+                else {
+                    if (weapon && updatedChar.weapon.indexOf(weapon) == -1) {
+                        updatedChar.weapon.push(weapon);
+                    }
                 }
             }
+            if (picture) {
+                updatedChar.picture = picture;
+            }
+            if (description) {
+                updatedChar.description = description;
+            }
+            updatedChar.save();
         }
-        if (picture) {
-            updatedChar.picture = picture;
-        }
-        updatedChar.save();
     }
-    async updateCharById(charId, birthName, courtesyName, title, sect, weapon, picture) {
+    async updateCharById(charId, birthName, courtesyName, title, sect, weapon, picture, description) {
         const updatedChar = await this.findChar(charId);
         if (birthName) {
             updatedChar.birthName = birthName;
@@ -186,7 +241,7 @@ let CharService = class CharService {
         }
         if (weapon) {
             if (Array.isArray(weapon)) {
-                weapon.forEach(e => {
+                weapon.forEach((e) => {
                     if (e && updatedChar.weapon.indexOf(e) == -1) {
                         updatedChar.weapon.push(e);
                     }
@@ -201,12 +256,15 @@ let CharService = class CharService {
         if (picture) {
             updatedChar.picture = picture;
         }
+        if (description) {
+            updatedChar.description = description;
+        }
         updatedChar.save();
     }
     async deleteCharById(charId) {
         const result = await this.charModel.deleteOne({ _id: charId }).exec();
         if (result.deletedCount === 0) {
-            throw new common_1.NotFoundException('product does not exist');
+            throw new common_1.NotFoundException("charater does not exist! try again Xue Yang");
         }
     }
     async findChar(charId) {
@@ -215,17 +273,17 @@ let CharService = class CharService {
             char = await this.charModel.findById(charId);
         }
         catch (error) {
-            throw new common_1.NotFoundException('product does not exist');
+            throw new common_1.NotFoundException("character does not exist! try again Mo Xuanyu");
         }
         if (!char) {
-            throw new common_1.NotFoundException('product does not exist');
+            throw new common_1.NotFoundException("character does not exist try again Mo Xuanyu!");
         }
         return char;
     }
 };
 CharService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)('Char')),
+    __param(0, (0, mongoose_1.InjectModel)("Char")),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], CharService);
 exports.CharService = CharService;

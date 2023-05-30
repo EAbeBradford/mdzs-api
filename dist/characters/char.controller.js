@@ -23,8 +23,8 @@ let CharController = class CharController {
         const chars = await this.charsService.getAllChars();
         return chars;
     }
-    async addProduct(charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture) {
-        const generatedId = await this.charsService.insertChar(charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture);
+    async addProduct(charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription) {
+        const generatedId = await this.charsService.insertChar(charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription);
         return { id: generatedId };
     }
     async getCharById(charId) {
@@ -35,12 +35,12 @@ let CharController = class CharController {
         const char = await this.charsService.getCharByName(name);
         return char;
     }
-    async updateCharByName(charName, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture) {
-        await this.charsService.updateCharByName(charName, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture);
+    async updateCharByName(charName, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription) {
+        await this.charsService.updateCharByName(charName, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription);
         return null;
     }
-    async updateCharById(charId, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture) {
-        await this.charsService.updateCharById(charId, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture);
+    async updateCharById(charId, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription) {
+        await this.charsService.updateCharById(charId, charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription);
         return null;
     }
     async deleteCharById(charId) {
@@ -82,8 +82,9 @@ __decorate([
     __param(3, (0, common_1.Body)('sect')),
     __param(4, (0, common_1.Body)('weapon')),
     __param(5, (0, common_1.Body)('picture')),
+    __param(6, (0, common_1.Body)('description')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String, String, Array, String]),
+    __metadata("design:paramtypes", [String, String, String, String, Array, String, String]),
     __metadata("design:returntype", Promise)
 ], CharController.prototype, "addProduct", null);
 __decorate([
@@ -109,8 +110,9 @@ __decorate([
     __param(4, (0, common_1.Body)('sect')),
     __param(5, (0, common_1.Body)('weapon')),
     __param(6, (0, common_1.Body)('picture')),
+    __param(7, (0, common_1.Body)('description')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String, String, String, Array, String]),
+    __metadata("design:paramtypes", [String, String, String, String, String, Array, String, String]),
     __metadata("design:returntype", Promise)
 ], CharController.prototype, "updateCharByName", null);
 __decorate([
@@ -122,8 +124,9 @@ __decorate([
     __param(4, (0, common_1.Body)('sect')),
     __param(5, (0, common_1.Body)('weapon')),
     __param(6, (0, common_1.Body)('picture')),
+    __param(7, (0, common_1.Body)('description')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String, String, String, Array, String]),
+    __metadata("design:paramtypes", [String, String, String, String, String, Array, String, String]),
     __metadata("design:returntype", Promise)
 ], CharController.prototype, "updateCharById", null);
 __decorate([

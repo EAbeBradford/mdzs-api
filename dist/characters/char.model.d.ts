@@ -6,6 +6,7 @@ export declare const CharSchema: mongoose.Schema<any, mongoose.Model<any, any, a
     title?: string;
     sect?: string;
     weapon?: string[];
+    description?: string;
 }>;
 export interface Char extends mongoose.Document {
     id: string;
@@ -15,4 +16,5 @@ export interface Char extends mongoose.Document {
     sect: string;
     weapon: Array<string>;
     picture: string;
+    description: string;
 }

@@ -21,8 +21,8 @@ let LocationsService = class LocationsService {
         this.locationModel = locationModel;
     }
     async getAllLocations() {
-        const chars = await this.locationModel.find().exec();
-        return chars.map((l) => ({
+        const locations = await this.locationModel.find().exec();
+        return locations.map((l) => ({
             id: l.id,
             name: l.name,
             sect: l.sect,
