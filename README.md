@@ -13,6 +13,10 @@ use the base url <a href = "https://mdzs-api.fly.dev"> https://mdzs-api.fly.dev<
 
 this gets all the charaters in The Untamed
 
+#### <a href=https://mdzs-api.fly.dev/characters/random> https://mdzs-api.fly.dev/characters/random</a> 
+
+this gets a random charaters in The Untamed
+
 #### <a href=https://mdzs-api.fly.dev/characters/sect/lan> https://mdzs-api.fly.dev/characters/sect/lan</a> 
 
 this gets all the charaters in the Lan sect
