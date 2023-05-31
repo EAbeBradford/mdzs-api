@@ -13,6 +13,15 @@ export declare class CharService {
         picture: string;
         description: string;
     }[]>;
+    getRansomChar(): Promise<{
+        birthName: string;
+        courtesyName: string;
+        title: string;
+        sect: string;
+        weapon: string[];
+        picture: string;
+        description: string;
+    }>;
     insertChar(birthName: string, courtesyName: string, title: string, sect: string, weapon: Array<string>, picture: string, description: string): Promise<string>;
     getAllLan(): Promise<{
         id: string;

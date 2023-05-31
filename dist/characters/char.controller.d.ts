@@ -12,6 +12,15 @@ export declare class CharController {
         picture: string;
         description: string;
     }[]>;
+    getRandomChars(): Promise<{
+        birthName: string;
+        courtesyName: string;
+        title: string;
+        sect: string;
+        weapon: string[];
+        picture: string;
+        description: string;
+    }>;
     addProduct(charBirthName: string, charCourtesyName: string, charTitle: string, charSect: string, charWeapon: Array<string>, charPicture: string, charDescription: string): Promise<{
         id: string;
     }>;

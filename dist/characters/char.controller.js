@@ -23,6 +23,10 @@ let CharController = class CharController {
         const chars = await this.charsService.getAllChars();
         return chars;
     }
+    async getRandomChars() {
+        const chars = await this.charsService.getRansomChar();
+        return chars;
+    }
     async addProduct(charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription) {
         const generatedId = await this.charsService.insertChar(charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription);
         return { id: generatedId };
@@ -74,6 +78,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], CharController.prototype, "getAllChars", null);
+__decorate([
+    (0, common_1.Get)('/random'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CharController.prototype, "getRandomChars", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)('birthName')),

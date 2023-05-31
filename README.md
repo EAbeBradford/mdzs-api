@@ -31,6 +31,11 @@ this gets the wei ying
 
 get other sects by replacing wei ying with a character's name
 
+#### <a href=https://mdzs-api.fly.dev/locations> https://mdzs-api.fly.dev/locations</a> 
+
+this gets all the locations
+
+
 
 
 

@@ -23,6 +23,21 @@ export class CharService {
     }));
   }
 
+  async getRansomChar() {
+    const chars = await this.charModel.find().exec();
+    const index = Math.floor(Math.random()*chars.length);
+    const char = chars[index];
+    return {
+        birthName: char.birthName,
+        courtesyName: char.courtesyName,
+        title: char.title,
+        sect: char.sect,
+        weapon: char.weapon,
+        picture: char.picture,
+        description: char.description,
+      };
+  }
+
   async insertChar(
     birthName: string,
     courtesyName: string,
