@@ -21,7 +21,7 @@ export declare class CharController {
         picture: string;
         description: string;
     }>;
-    addProduct(charBirthName: string, charCourtesyName: string, charTitle: string, charSect: string, charWeapon: Array<string>, charPicture: string, charDescription: string): Promise<{
+    addChar(charBirthName: string, charCourtesyName: string, charTitle: string, charSect: string, charWeapon: Array<string>, charPicture: string, charDescription: string): Promise<{
         id: string;
     }>;
     getCharById(charId: string): Promise<{

@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { StringArraySupportOption } from 'prettier';
 
 export const CharSchema = new mongoose.Schema({
     birthName: {type: String, required:false},

@@ -27,7 +27,7 @@ let CharController = class CharController {
         const chars = await this.charsService.getRansomChar();
         return chars;
     }
-    async addProduct(charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription) {
+    async addChar(charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription) {
         const generatedId = await this.charsService.insertChar(charBirthName, charCourtesyName, charTitle, charSect, charWeapon, charPicture, charDescription);
         return { id: generatedId };
     }
@@ -96,7 +96,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String, String, String, Array, String, String]),
     __metadata("design:returntype", Promise)
-], CharController.prototype, "addProduct", null);
+], CharController.prototype, "addChar", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),

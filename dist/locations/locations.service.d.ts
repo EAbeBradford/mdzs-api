@@ -52,5 +52,8 @@ export declare class LocationsService {
         description: string;
         picture: string;
     }[]>;
+    updateLocationById(locationId: string, name: string, sect: string, destrolyed: boolean, description: string, picture: string): Promise<void>;
+    updateLocationByName(name: string, sect: string, destrolyed: boolean, description: string, picture: string): Promise<void>;
     deleteCharById(charId: string): Promise<void>;
+    private findLocation;
 }

@@ -10,7 +10,9 @@ export declare class LocationsController {
         description: string;
         picture: string;
     }[]>;
-    addProduct(locationName: string, locationSect: string, locationDestrolyed: boolean, locationDescription: string, locationPicture: string): Promise<{
+    addLocation(locationName: string, locationSect: string, locationDestrolyed: boolean, locationDescription: string, locationPicture: string): Promise<{
         id: string;
     }>;
+    updateLocationById(charId: string, locationName: string, locationSect: string, locationDestrolyed: boolean, locationDescription: string, locationPicture: string): Promise<any>;
+    updateLocationByName(locationName: string, locationSect: string, locationDestrolyed: boolean, locationDescription: string, locationPicture: string): Promise<any>;
 }

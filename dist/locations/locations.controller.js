@@ -23,9 +23,17 @@ let LocationsController = class LocationsController {
         const locations = await this.locationsService.getAllLocations();
         return locations;
     }
-    async addProduct(locationName, locationSect, locationDestrolyed, locationDescription, locationPicture) {
+    async addLocation(locationName, locationSect, locationDestrolyed, locationDescription, locationPicture) {
         const generatedId = await this.locationsService.insertLocation(locationName, locationSect, locationDestrolyed, locationDescription, locationPicture);
         return { id: generatedId };
+    }
+    async updateLocationById(charId, locationName, locationSect, locationDestrolyed, locationDescription, locationPicture) {
+        await this.locationsService.updateLocationById(charId, locationName, locationSect, locationDestrolyed, locationDescription, locationPicture);
+        return null;
+    }
+    async updateLocationByName(locationName, locationSect, locationDestrolyed, locationDescription, locationPicture) {
+        await this.locationsService.updateLocationByName(locationName, locationSect, locationDestrolyed, locationDescription, locationPicture);
+        return null;
     }
 };
 __decorate([
@@ -44,7 +52,30 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String, Boolean, String, String]),
     __metadata("design:returntype", Promise)
-], LocationsController.prototype, "addProduct", null);
+], LocationsController.prototype, "addLocation", null);
+__decorate([
+    (0, common_1.Patch)(":id"),
+    __param(0, (0, common_1.Param)("id")),
+    __param(1, (0, common_1.Body)("name")),
+    __param(2, (0, common_1.Body)("sect")),
+    __param(3, (0, common_1.Body)("didItGetDestroyed")),
+    __param(4, (0, common_1.Body)("description")),
+    __param(5, (0, common_1.Body)("picture")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, String, Boolean, String, String]),
+    __metadata("design:returntype", Promise)
+], LocationsController.prototype, "updateLocationById", null);
+__decorate([
+    (0, common_1.Patch)("name/:name"),
+    __param(0, (0, common_1.Param)("name")),
+    __param(1, (0, common_1.Body)("sect")),
+    __param(2, (0, common_1.Body)("didItGetDestroyed")),
+    __param(3, (0, common_1.Body)("description")),
+    __param(4, (0, common_1.Body)("picture")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, Boolean, String, String]),
+    __metadata("design:returntype", Promise)
+], LocationsController.prototype, "updateLocationByName", null);
 LocationsController = __decorate([
     (0, common_1.Controller)("locations"),
     __metadata("design:paramtypes", [locations_service_1.LocationsService])

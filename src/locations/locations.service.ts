@@ -26,8 +26,8 @@ export class LocationsService {
   async insertLocation(
     name: string,
     sect: string,
-    destrolyed:boolean,
-    description:string,
+    destrolyed: boolean,
+    description: string,
     picture: string
   ) {
     const newLocation = new this.locationModel({
@@ -186,65 +186,92 @@ export class LocationsService {
   //         updatedChar.picture = picture;
   //     }
   //     updatedChar.save();
-  //     // this.products[index] = updatedProduct;
   // }
 
-  // async updateCharById(charId: string, birthName: string, courtesyName: string, title:string, sect: string, weapon: Array<string>, picture:string) {
-  //     const updatedChar = await this.findChar(charId);
+  async updateLocationById(
+    locationId: string,
+    name: string,
+    sect: string,
+    destrolyed: boolean,
+    description: string,
+    picture: string
+  ) {
+    const updatedLocation = await this.findLocation(locationId);
 
-  //     if (birthName) {
-  //         updatedChar.birthName = birthName;
-  //     }
-  //     if (courtesyName) {
-  //         updatedChar.courtesyName = courtesyName;
-  //     }
-  //     if (title) {
-  //         updatedChar.title = title;
-  //     }
-  //     if (sect) {
-  //         updatedChar.sect = sect;
-  //     }
-  //     if (weapon) {
-  //         if(Array.isArray(weapon)){
-  //             weapon.forEach(e => {
-  //                 if (e && updatedChar.weapon.indexOf(e) == -1) {
-  //                     updatedChar.weapon.push(e);
-  //                 }
-  //             });
+    if (name) {
+      updatedLocation.name = name;
+    }
+    if (destrolyed) {
+      updatedLocation.didItGetDestroyed = destrolyed;
+    }
+    if (title) {
+      updatedLocation.description = description;
+    }
+    if (sect) {
+      updatedLocation.sect = sect;
+    }
 
-  //         }
-  //         else{
-  //             if (weapon && updatedChar.weapon.indexOf(weapon) == -1) {
-  //                 updatedChar.weapon.push(weapon);
-  //             }
-  //         }
-  //     }
-  //     if (picture) {
-  //         updatedChar.picture = picture;
-  //     }
-  //     updatedChar.save();
-  //     // this.products[index] = updatedProduct;
-  // }
+    if (picture) {
+      updatedLocation.picture = picture;
+    }
+    updatedLocation.save();
+  }
+  async updateLocationByName(
+    name: string,
+    sect: string,
+    destrolyed: boolean,
+    description: string,
+    picture: string
+  ) {
+    const locations = await this.locationModel.find().exec();
+
+    let location;
+    while (name.indexOf("%20") > 0) {
+      name = name.replace("%20", " ");
+    }
+    locations.forEach((e) => {
+      if (e.name.toLocaleLowerCase() === name.toLocaleLowerCase()) {
+        location = e;
+      } 
+    });
+    const updatedLocation = location;
+
+    if (name) {
+      updatedLocation.name = name;
+    }
+    if (destrolyed) {
+      updatedLocation.didItGetDestroyed = destrolyed;
+    }
+    if (title) {
+      updatedLocation.description = description;
+    }
+    if (sect) {
+      updatedLocation.sect = sect;
+    }
+
+    if (picture) {
+      updatedLocation.picture = picture;
+    }
+    updatedLocation.save();
+  }
 
   async deleteCharById(charId: string) {
     const result = await this.locationModel.deleteOne({ _id: charId }).exec();
     if (result.deletedCount === 0) {
-      throw new NotFoundException("product does not exist");
+      throw new NotFoundException("location does not exist");
     }
   }
 
-  // private async findChar(charId: string): Promise<Char> {
-  //     let char;
-  //     try {
-  //         char = await this.locationModel.findById(charId)
-
-  //     } catch (error) {
-  //         throw new NotFoundException('product does not exist');
-
-  //     }
-  //     if (!char) {
-  //         throw new NotFoundException('product does not exist');
-  //     }
-  //     return char;
-  // }
+  private async findLocation(locationId: string): Promise<Location> {
+    let location;
+    try {
+      location = await this.locationModel.findById(locationId);
+    } catch (error) {
+      throw new NotFoundException("location does not exist");
+    }
+    if (!location) {
+      throw new NotFoundException("location does not exist");
+    }
+    return location;
+  }
 }

@@ -17,7 +17,7 @@ export class CharController {
     }
 
     @Post()
-    async addProduct(
+    async addChar(
         @Body('birthName') charBirthName: string, 
         @Body('courtesyName') charCourtesyName: string, 
         @Body('title') charTitle: string,

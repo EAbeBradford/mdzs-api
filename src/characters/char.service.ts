@@ -198,7 +198,7 @@ export class CharService {
   ) {
     const chars = await this.charModel.find().exec();
     let char;
-    if (charName.indexOf("%20") > 0) {
+    while(charName.indexOf("%20") > 0) {
       charName = charName.replace("%20", " ");
     }
     chars.forEach((e) => {
@@ -259,7 +259,6 @@ export class CharService {
       updatedChar.save();
     }
 
-    // this.products[index] = updatedProduct;
   }
 
   async updateCharById(
@@ -306,7 +305,6 @@ export class CharService {
       updatedChar.description = description;
     }
     updatedChar.save();
-    // this.products[index] = updatedProduct;
   }
 
   async deleteCharById(charId: string) {

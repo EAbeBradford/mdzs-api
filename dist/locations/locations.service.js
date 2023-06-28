@@ -16,6 +16,7 @@ exports.LocationsService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
+const process_1 = require("process");
 let LocationsService = class LocationsService {
     constructor(locationModel) {
         this.locationModel = locationModel;
@@ -102,11 +103,72 @@ let LocationsService = class LocationsService {
             picture: l.picture,
         }));
     }
+    async updateLocationById(locationId, name, sect, destrolyed, description, picture) {
+        const updatedLocation = await this.findLocation(locationId);
+        if (name) {
+            updatedLocation.name = name;
+        }
+        if (destrolyed) {
+            updatedLocation.didItGetDestroyed = destrolyed;
+        }
+        if (process_1.title) {
+            updatedLocation.description = description;
+        }
+        if (sect) {
+            updatedLocation.sect = sect;
+        }
+        if (picture) {
+            updatedLocation.picture = picture;
+        }
+        updatedLocation.save();
+    }
+    async updateLocationByName(name, sect, destrolyed, description, picture) {
+        const locations = await this.locationModel.find().exec();
+        let location;
+        while (name.indexOf("%20") > 0) {
+            name = name.replace("%20", " ");
+        }
+        locations.forEach((e) => {
+            if (e.name.toLocaleLowerCase() === name.toLocaleLowerCase()) {
+                location = e;
+            }
+        });
+        const updatedLocation = location;
+        if (name) {
+            updatedLocation.name = name;
+        }
+        if (destrolyed) {
+            updatedLocation.didItGetDestroyed = destrolyed;
+        }
+        if (process_1.title) {
+            updatedLocation.description = description;
+        }
+        if (sect) {
+            updatedLocation.sect = sect;
+        }
+        if (picture) {
+            updatedLocation.picture = picture;
+        }
+        updatedLocation.save();
+    }
     async deleteCharById(charId) {
         const result = await this.locationModel.deleteOne({ _id: charId }).exec();
         if (result.deletedCount === 0) {
-            throw new common_1.NotFoundException("product does not exist");
+            throw new common_1.NotFoundException("location does not exist");
         }
+    }
+    async findLocation(locationId) {
+        let location;
+        try {
+            location = await this.locationModel.findById(locationId);
+        }
+        catch (error) {
+            throw new common_1.NotFoundException("location does not exist");
+        }
+        if (!location) {
+            throw new common_1.NotFoundException("location does not exist");
+        }
+        return location;
     }
 };
 LocationsService = __decorate([

@@ -7,7 +7,6 @@ import { LocationSchema } from './locations.model';
 //import { CharSchema } from './char.model';
 
 @Module({
-  //imports: [ProductModule],
   imports: [MongooseModule.forFeature([{ name: 'Locations', schema: LocationSchema }])],
   controllers: [LocationsController],
   providers: [LocationsService]

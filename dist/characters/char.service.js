@@ -183,7 +183,7 @@ let CharService = class CharService {
     async updateCharByName(charName, birthName, courtesyName, title, sect, weapon, picture, description) {
         const chars = await this.charModel.find().exec();
         let char;
-        if (charName.indexOf("%20") > 0) {
+        while (charName.indexOf("%20") > 0) {
             charName = charName.replace("%20", " ");
         }
         chars.forEach((e) => {
